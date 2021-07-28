@@ -202,7 +202,7 @@ To compute the results, launch in each folder the following command `mitsuba -p 
 
 ### Transmittance estimation
 
-Our technique is integrated inside the transmittance estimation of the heterogenous plugin in Mitsuba. There is no limitation in the scene, as long as our plugin `heterogeneousQuad` is used.An example of scene can be found in `scenes/hetvol`.
+Our technique is integrated inside the transmittance estimation of the heterogenous plugin in Mitsuba. There is no limitation in the scene, as long as our plugin `heterogeneousQuad` is used. An example of scene can be found in `scenes/hetvol`.
 
 ### Low-order single scattering
 
@@ -211,6 +211,9 @@ Our single scattering implementation is integrated inside our mega plugin `quad`
 ### Direct illumination
 
 Our direct illumination implementation is integrated inside our mega plugin `quad`. An example of scene can be found inside `scenes/dragon`.
+
+> **⚠ WARNING: Missing dragon model** <br>
+> Due to limitations of Github, you need to download **XYZ RGB - Asian Dragon** model from [Stanford 3D Scanning Repository](http://graphics.stanford.edu/data/3Dscanrep/) and put it in the folder with name `dragon.ply`
 
 ### Distribution effects
 
