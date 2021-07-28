@@ -1,0 +1,3 @@
+[submodule "mitsuba/ext/viltrum"]
+	path = mitsuba/ext/viltrum
+	url = https://github.com/adolfomunoz/viltrum.git
