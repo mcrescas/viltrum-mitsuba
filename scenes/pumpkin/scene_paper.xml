@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<scene version="0.6.0">
+
+    <integrator type="quad">
+        <float name="spp" value="64"/>
+        <integer name="n_dims" value="3"/>
+        <float name="spp_cv" value="-1"/>
+        <float name="scaleSpp" value="16"/>
+        <integer name="maxDepth" value="1"/>
+        <integer name="maxDepthQuad" value="1"/>
+        <string name="typeIntegrator" value="cv_pixel_alphaOpt"/>
+        <string name="typeSubIntegrator" value="singleScatteringEquiangular"/>
+        <string name="higherQuadRule" value="simpson"/>
+        <float name="error_size_weight" value="0.00001"/>
+        <boolean name="error_image" value="false"/>
+        <boolean name="renderQuad" value="false"/>
+
+        <boolean name="directSampling" value="true"/>
+
+        <boolean name="mappingTs" value="false"/>
+    </integrator>
+
+    <medium type="homogeneous" name="exterior" id="fog">
+        <rgb name="sigmaS" value="0.4, 0.4, 0.4"/>
+        <rgb name="sigmaA" value="0, 0, 0"/>
+    </medium>
+    <sensor type="perspective" >
+        <float name="fov" value="19.5" />
+        <transform name="toWorld" >
+            <lookat origin="-0.9 0.8 3.5" target="0.15 0.2 0" up="0 1 0"/>
+        </transform>
+        <sampler type="independent" >
+            <integer name="sampleCount" value="32" />
+        </sampler>
+        <film type="hdrfilm" >
+            <integer name="width" value="1280" />
+            <integer name="height" value="720" />
+            <boolean name="banner" value="false" />
+            <string name="metadata['renderTime']" value="$scene['renderTime']"/>
+            <rfilter type="box"/>
+        </film>
+        <ref id="fog" />
+    </sensor>
+    <emitter type="point">
+        <point name="position" x="0.05" y="0.21" z="0"/>
+        <spectrum name="intensity" value="100, 100, 50"/>
+    </emitter>
+    <emitter type="point">
+        <point name="position" x="0" y="2" z="0"/>
+        <spectrum name="intensity" value="50, 50, 50"/>
+    </emitter>
+    <shape type="obj">
+        <string name="filename" value="Halloween_Pumpkin.obj"/>
+    </shape>
+
+</scene>

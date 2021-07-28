@@ -21,7 +21,6 @@ config.log
 
 */CMakeCache.txt
 *.exe
-scenes
 
 # MSVC++-related
 build/mitsuba-msvc2017.sdf

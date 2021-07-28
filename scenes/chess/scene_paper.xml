@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<scene version="0.6.0">
+	<integrator type="quad">
+		<float name="spp" value="16"/>
+		<integer name="n_dims" value="4"/>
+		<float name="spp_cv" value="-1"/>
+		<float name="scaleSpp" value="16"/>
+		<integer name="maxDepth" value="1"/>
+		<integer name="maxDepthQuad" value="1"/>
+		<string name="typeIntegrator" value="cv_pixel_alphaOpt"/>
+		<string name="typeSubIntegrator" value="path"/>
+		<string name="higherQuadRule" value="simpson"/>
+		<float name="error_size_weight" value="0.00001"/>
+		<boolean name="renderQuad" value="false"/>
+	</integrator>
+
+	<emitter type="constant">
+		<spectrum name="radiance" value="0.14 0.23 0.26"/>
+	</emitter>
+
+	<sensor type="thinlens">
+		<float name="apertureRadius" value="0.005"/>
+		<float name="focusDistance" value="0.3"/>
+		<float name="fov" value="17"/>
+		<string name="fovAxis" value="x"/>
+		<transform name="toWorld">
+			<lookat origin="0.158801, 0.0749475, 0.396875" up="-0.0529002, 0.992222, -0.112678" target="-0.262869, -0.0395306, -0.501289"/>
+		</transform>
+
+		<sampler type="independentRandom">
+			<integer name="sampleCount" value="64"/>
+		</sampler>
+
+		<film type="hdrfilm">
+			<boolean name="banner" value="false"/>
+			<integer name="height" value="1000"/> <!-- 1000 -->
+			<string name="metadata['memUsage']" value="$scene['memUsage']"/>
+			<string name="metadata['renderTime']" value="$scene['renderTime']"/>
+			<integer name="width" value="750"/> <!-- 750 -->
+
+			<rfilter type="box"/>
+		</film>
+	</sensor>
+	<!-- Emitters -->
+
+	<emitter type="point">
+		<spectrum name="intensity" value=".75, .75, .75"/>
+		<point name="position" y=".2950" z=".25841" x=".33452"/>
+	</emitter>
+	<emitter type="point">
+		<spectrum name="intensity" value="2.6, 2.6, 2.6"/>
+		<point name="position" x="-1.0" y="-0.05" z="1.0"/>
+	</emitter>
+	<emitter type="point">
+		<spectrum name="intensity" value=".20, .20, .20"/>
+		<point name="position" x="-.428147" y=".422" z=".123599"/>
+	</emitter>
+	<emitter type="point">
+		<spectrum name="intensity" value=".15, .15, .15"/>
+		<point name="position" x=".274927" y=".32900" z="-.368014"/>
+	</emitter>
+	<emitter type="point">
+		<spectrum name="intensity" value=".50, .50, .50"/>
+		<point name="position" x="-.158656" y=".385" z=".336004"/>
+	</emitter>
+	<emitter type="point">
+		<spectrum name="intensity" value=".37, .37, .37"/>
+		<point name="position" x=".23452" y=".3950" z=".25841"/>
+	</emitter>
+	<emitter type="point">
+		<spectrum name="intensity" value=".10 .10 .10"/>
+		<point name="position" x="-.428147" y=".522" z=".123599"/>
+	</emitter>
+	<emitter type="point">
+		<spectrum name="intensity" value=".07 .07 .07"/>
+		<point name="position" x=".374927" y=".22900" z="-.368014"/>
+	</emitter>
+	<emitter type="point">
+		<spectrum name="intensity" value=".25, .25, .25"/>
+		<point name="position" x="-.358656" y=".185" z=".336004"/>
+	</emitter>
+	<!-- Models -->
+
+	<shape type="obj">
+		<string name="filename" value="bishop1.white.obj"/>
+
+		<bsdf type="plastic">
+			<spectrum name="diffuseReflectance" value=".9, .9, .9"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="bishop2.white.obj"/>
+
+		<bsdf type="plastic">
+			<spectrum name="diffuseReflectance" value=".9, .9, .9"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="black_squares2.obj"/>
+
+		<bsdf type="diffuse">
+			<spectrum name="diffuseReflectance" value="0.2, 0.2, 0.2"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="white_squares2.obj"/>
+
+		<bsdf type="diffuse">
+			<spectrum name="diffuseReflectance" value="0.9, 0.9, 0.9"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="chessboard.sides.obj"/>
+
+		<bsdf type="plastic">
+			<spectrum name="diffuseReflectance" value=".4, .4, .4"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="king.white.obj"/>
+
+		<bsdf type="plastic">
+			<spectrum name="diffuseReflectance" value=".9, .9, .9"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="pawn1.white.obj"/>
+
+		<bsdf type="plastic">
+			<spectrum name="diffuseReflectance" value=".9, .9, .9"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="pawn2.white.obj"/>
+
+		<bsdf type="plastic">
+			<spectrum name="diffuseReflectance" value=".9, .9, .9"/>
+		</bsdf>
+	</shape>
+
+	<shape type="obj">
+		<transform name="toWorld">
+			<translate y="0" z="0.08274" x="0.034288"/>
+		</transform>
+		<string name="filename" value="black_pawn3.obj"/>
+
+		<bsdf type="bumpmap">
+			<texture type="scale">
+				<texture type="bitmap">
+					<string name="filename" value="black_pawn.bump0.exr"/>
+				</texture>
+			</texture>
+
+			<bsdf type="plastic">
+				<texture name="specularReflectance" type="bitmap">
+					<string name="filename" value="black_pawn.specularity0.exr"/>
+				</texture>
+
+				<texture name="diffuseReflectance" type="bitmap">
+					<string name="filename" value="black_pawn.diffuse0000.exr"/>
+				</texture>
+			</bsdf>
+		</bsdf>
+	</shape>
+
+	<shape type="obj">
+		<transform name="toWorld">
+			<translate y="0" z="0.20274" x="0.038288"/>
+		</transform>
+		<string name="filename" value="black_pawn3.obj"/>
+
+		<bsdf type="bumpmap">
+			<texture type="scale">
+				<texture type="bitmap">
+					<string name="filename" value="black_pawn.bump0.exr"/>
+				</texture>
+			</texture>
+
+			<bsdf type="plastic">
+				<texture name="specularReflectance" type="bitmap">
+					<string name="filename" value="black_pawn.specularity0.exr"/>
+				</texture>
+
+				<texture name="diffuseReflectance" type="bitmap">
+					<string name="filename" value="black_pawn.diffuse0000.exr"/>
+				</texture>
+			</bsdf>
+		</bsdf>
+	</shape>
+
+	<shape type="obj">
+		<transform name="toWorld">
+			<translate y="0" z="0" x="-0.014"/>
+			<scale x="1.8" y="1.8" z="1.8"/>
+		</transform>
+		<string name="filename" value="bishop1.white.obj"/>
+
+		<bsdf type="bumpmap">
+			<texture type="scale">
+				<texture type="bitmap">
+					<string name="filename" value="black_queen.bump0.exr"/>
+				</texture>
+			</texture>
+
+			<bsdf type="plastic">
+				<texture name="specularReflectance" type="bitmap">
+					<string name="filename" value="black_queen.specularity0.exr"/>
+				</texture>
+
+				<texture name="diffuseReflectance" type="bitmap">
+					<string name="filename" value="black_queen.diffuse0000.exr"/>
+				</texture>
+			</bsdf>
+		</bsdf>
+	</shape>
+
+	<shape type="obj">
+		<transform name="toWorld">
+			<translate y="-0.01" z="0" x="-0.094"/>
+			<scale x="2.2" y="2.2" z="2.2"/>
+		</transform>
+		<string name="filename" value="bishop1.white.obj"/>
+
+		<bsdf type="bumpmap">
+			<texture type="scale">
+				<texture type="bitmap">
+					<string name="filename" value="black_queen.bump0.exr"/>
+				</texture>
+			</texture>
+
+			<bsdf type="plastic">
+				<texture name="specularReflectance" type="bitmap">
+					<string name="filename" value="black_queen.specularity0.exr"/>
+				</texture>
+
+				<texture name="diffuseReflectance" type="bitmap">
+					<string name="filename" value="black_queen.diffuse0000.exr"/>
+				</texture>
+			</bsdf>
+		</bsdf>
+	</shape>
+
+	<shape type="obj">
+		<transform name="toWorld">
+			<translate y="0" z="0.12337" x="0.023704"/>
+		</transform>
+		<string name="filename" value="black_queen3.obj"/>
+
+		<bsdf type="bumpmap">
+			<texture type="scale">
+				<texture type="bitmap">
+					<string name="filename" value="black_queen.bump0.exr"/>
+				</texture>
+			</texture>
+
+			<bsdf type="plastic">
+				<texture name="specularReflectance" type="bitmap">
+					<string name="filename" value="black_queen.specularity0.exr"/>
+				</texture>
+
+				<texture name="diffuseReflectance" type="bitmap">
+					<string name="filename" value="black_queen.diffuse0000.exr"/>
+				</texture>
+			</bsdf>
+		</bsdf>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="queen.white.obj"/>
+
+		<bsdf type="plastic">
+			<spectrum name="diffuseReflectance" value=".9, .9, .9"/>
+		</bsdf>
+	</shape>
+</scene>

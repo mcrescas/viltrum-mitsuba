@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<scene version="0.6.0">
+	<integrator type="volpath_simple">
+		<integer name="maxDepth" value="8"/>
+		<boolean name="onlyAbsorption" value="true"/>
+	</integrator>
+
+	<medium type="heterogeneousQuad" id="smoke">
+		<string name="method" value="cvadaptive"/>
+
+		<integer name="numberSamples" value="2"/>
+		<integer name="adaptiveIters" value="3"/>
+
+		<volume name="density" type="gridvolume">
+			<string name="filename" value="smoke.vol"/>
+		</volume>
+
+		<volume name="albedo" type="constvolume">
+			<spectrum name="value" value="0."/>
+		</volume>
+		<float name="scale" value="100"/>
+	</medium>
+
+	<shape type="obj">
+		<string name="filename" value="bounds.obj"/>
+
+		<ref name="interior" id="smoke"/>
+	</shape>
+
+	<emitter type="constant">
+		<spectrum name="radiance" value="1,1,1"/>
+	</emitter>
+
+	<sensor type="perspective">
+		<float name="focusDistance" value="1.25668"/>
+		<float name="fov" value="45.8402"/>
+		<string name="fovAxis" value="x"/>
+		<transform name="toWorld">
+			<scale x="-1"/>
+
+			<lookat target="-0.166029, 0.148984, -0.537402" origin="-0.61423, 0.154197, -1.43132" up="-0.000640925, -0.999985, -0.0055102"/>
+		</transform>
+
+		<sampler type="independent">
+			<integer name="sampleCount" value="8"/>
+		</sampler>
+
+		<film type="hdrfilm">
+			<integer name="height" value="576"/>
+			<integer name="width" value="768"/>
+			<boolean name="banner" value="false"/>
+
+			<rfilter type="box"/>
+		</film>
+	</sensor>
+</scene>

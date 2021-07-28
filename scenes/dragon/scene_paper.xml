@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scene version="0.6.0">
+	<integrator type="quad">
+		<float name="spp" value="32"/>
+		<integer name="n_dims" value="4"/>
+		<float name="spp_cv" value="-1"/>
+		<float name="scaleSpp" value="16"/>
+		<integer name="maxIterations" value="1"/>
+		<integer name="maxDepth" value="2"/>
+		<string name="typeIntegrator" value="cv_pixel_alphaOpt"/>
+		<string name="typeSubIntegrator" value="pathMIS"/>
+		<string name="higherQuadRule" value="simpson"/>
+		<float name="error_size_weight" value="0.00001"/>
+		<boolean name="error_image" value="false"/>
+		<boolean name="renderQuad" value="false"/>
+	</integrator>
+
+    <sensor type="perspective" id="Camera-camera">
+		<transform name="toWorld">
+			<lookat up="0, 1, 0" target="0, 0, 0" origin="0, 3, -3"/>
+		</transform>
+		<float name="fov" value="90"/>
+		<string name="fovAxis" value="x"/>
+
+		<sampler type="independent" id="Camera-camera_sampler">
+			<integer name="sampleCount" value="4"/>
+		</sampler>
+
+		<film type="hdrfilm" id="Camera-camera_film">
+			<integer name="width" value="512"/>
+			<integer name="height" value="512"/>
+			<boolean name="banner" value="false"/>
+			<string name="metadata['memUsage']" value="$scene['memUsage']"/>
+			<string name="metadata['renderTime']" value="$scene['renderTime']"/>
+
+			<integer name="cropOffsetX" value="0"/>
+			<integer name="cropOffsetY" value="138"/>
+			<integer name="cropWidth" value="512"/>
+			<integer name="cropHeight" value="374"/>
+
+			<rfilter type="box">
+			</rfilter>
+		</film>
+	</sensor>
+
+
+    <shape type="rectangle">
+        <bsdf type="diffuse">
+
+        </bsdf>
+        <transform name="toWorld">
+            <rotate x="1" angle="-90"/>
+            <scale x="10" y="1" z="10"/>
+        </transform>
+    </shape>
+
+    <shape type="rectangle">
+        <bsdf type="diffuse">
+
+        </bsdf>
+        <transform name="toWorld">
+            <translate z="-3" y="-1.5"/>
+			<rotate x="1" angle="180"/>
+			<scale x="2" y="1.25" z="1.75"/>
+        </transform>
+        <emitter type="areaColor">
+			<texture name="radiance" type="scale">
+				<float name="scale" value="10.0"/>
+				<texture type="bitmap">
+					<string name="filename" value="gradient3.png"/>
+				</texture>
+			</texture>
+        </emitter>
+    </shape>
+
+    <shape type="ply">
+		<string name="filename" value="dragon.ply"/>
+		<transform name="toWorld">
+			<scale value=".02"/>
+			<rotate z="1" angle="-7"/>
+			<rotate y="1" angle="35"/>
+			<translate z="-.28" x="-.20" y="0.31"/>
+			<translate z="-.7"/>
+		</transform>
+
+		<bsdf type="phong">
+			<float name="exponent" value="50" />
+		</bsdf>
+	</shape>
+</scene>
