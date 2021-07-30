@@ -1,13 +1,17 @@
-cff-version: 1.2.0
+cff-version: "1.2.0"
+title: "Primary-Space Adaptive Control Variates using Piecewise-Polynomial Approximations"
 abstract: "This repository contains the source code of the paper Primary-Space Adaptive Control Variates using Piecewise-Polynomial Approximations by Miguel Crespo, Adrian Jarabo, and Adolfo Muñoz from ACM Transactions on Graphics."
 authors: 
-  - affiliation: "Universidad de Zaragoza"
+  -
+    affiliation: "Universidad de Zaragoza"
     family-names: Crespo
     given-names: Miguel
-  - affiliation: "Universidad de Zaragoza"
+  -
+    affiliation: "Universidad de Zaragoza"
     family-names: Jarabo
     given-names: Adrian
-  - affiliation: "Universidad de Zaragoza"
+  -
+    affiliation: "Universidad de Zaragoza"
     family-names: "Muñoz"
     given-names: Adolfo
 doi: "10.1145/3450627"
@@ -19,4 +23,5 @@ keywords:
   - "piecewise-polynomial"
 message: "If you use this code, please consider citing the following works accordingly."
 repository-code: "https://github.com/mcrescas/viltrum-mitsuba"
-title: "Primary-Space Adaptive Control Variates using Piecewise-Polynomial Approximations"
+version: 1.0.0
+date-released: 2017-07-28
