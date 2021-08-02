@@ -1,27 +1,23 @@
-cff-version: "1.2.0"
-title: "Primary-Space Adaptive Control Variates using Piecewise-Polynomial Approximations"
-abstract: "This repository contains the source code of the paper Primary-Space Adaptive Control Variates using Piecewise-Polynomial Approximations by Miguel Crespo, Adrian Jarabo, and Adolfo Muñoz from ACM Transactions on Graphics."
-authors: 
-  -
-    affiliation: "Universidad de Zaragoza"
-    family-names: Crespo
-    given-names: Miguel
-  -
-    affiliation: "Universidad de Zaragoza"
-    family-names: Jarabo
-    given-names: Adrian
-  -
-    affiliation: "Universidad de Zaragoza"
-    family-names: "Muñoz"
-    given-names: Adolfo
-doi: "10.1145/3450627"
-keywords: 
-  - rendering
-  - "numerical-integration"
-  - "quadrature-rules"
-  - "control-variates"
-  - "piecewise-polynomial"
-message: "If you use this code, please consider citing the following works accordingly."
-repository-code: "https://github.com/mcrescas/viltrum-mitsuba"
+title: >-
+  Primary-space Adaptive Control Variates Using Piecewise-polynomial
+  Approximations
+abstract: >-
+  This repository contains the source code of the paper Primary-space Adaptive
+  Control Variates Using Piecewise-polynomial Approximations by Miguel Crespo,
+  Adrian Jarabo and Adolfo Muñoz, from ACM Trans. Graph.
+doi: 10.1145/3450627
+repository-code: https://github.com/mcrescas/viltrum-mitsuba
 version: 1.0.0
-date-released: 2021-07-28
+date-released: 2021-07-14T22:00:00.000Z
+message: If you use this code, please consider citing the following works accordingly.
+authors:
+  - given-names: Miguel
+    family-names: Crespo
+    affiliation: Universidad de Zaragoza-I3A, Maria de Luna, Zaragoza (Spain)
+  - given-names: Adrian
+    family-names: Jarabo
+    affiliation: Universidad de Zaragoza-I3A, and Centro Universitario de la Defensa Zaragoza, Maria de Luna, Zaragoza (Spain)
+  - given-names: Adolfo
+    family-names: Muñoz
+    affiliation: Universidad de Zaragoza-I3A, Maria de Luna, Zaragoza (Spain)
+cff-version: 1.2.0
