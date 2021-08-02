@@ -2,11 +2,11 @@ cff-version: 1.2.0
 title: Primary-space Adaptive Control Variates Using Piecewise-polynomial Approximations
 doi: 10.1145/3450627
 message: If you use this software in your work, please cite it using the following metadata.
-date-released: 2021-07-14T22:00:00.000Z
+date-released: 2021-07-14
 authors:
   - given-names: Miguel
     family-names: Crespo
-    affiliation: Universidad de Zaragoza-I3A), Maria de Luna, Zaragoza (Spain)
+    affiliation: Universidad de Zaragoza-I3A, Maria de Luna, Zaragoza (Spain)
   - given-names: Adrian
     family-names: Jarabo
     affiliation: Universidad de Zaragoza-I3A, and Centro Universitario de la Defensa Zaragoza, Maria de Luna, Zaragoza (Spain)
