@@ -85,7 +85,7 @@ The implementation is based on [Mitsuba 0.6](https://github.com/mitsuba-renderer
 
 ### Citation
 
-This code is released under the [GPL v3](https://github.com/mcrescas/viltrum-mitsuba/blob/main/LICENSE). Additionally, if you are using this code in academic research, we would be grateful if you cited our paper, for which we generated with this source code:
+This code is released under the [GPL v3](https://github.com/mcrescas/viltrum-mitsuba/blob/master/LICENSE). Additionally, if you are using this code in academic research, we would be grateful if you cited our paper, for which we generated with this source code:
 
 ```bibtex
 @article{crespo21primary,
