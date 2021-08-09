@@ -85,6 +85,8 @@ The implementation is based on [Mitsuba 0.6](https://github.com/mitsuba-renderer
 
 ### Citation
 
+This code is released under the [GPL v3](https://github.com/mcrescas/viltrum-mitsuba/blob/main/LICENSE). Additionally, if you are using this code in academic research, we would be grateful if you cited our paper, for which we generated with this source code:
+
 ```bibtex
 @article{crespo21primary,
   title = {Primary-Space Adaptive Control Variates using Piecewise-Polynomial Approximations.},
@@ -141,6 +143,7 @@ Indeed, `quadrature` plugin launch a custom "integrator" of our library `mitsuba
 | typeSubIntegrator | Name of the Mitsuba integrator to be used with our technique
 |higherQuadRule| What quadrature rule to use as the higher one : `simpson` or `boole`. Defaults to `simpson`
 |error_size_weight| Factor of our heuristic that depends on the size of the hyper region. Defaults to `0.00001`
+
 
 #### Type integrators
 | Name | Explanation |
