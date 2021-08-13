@@ -3,16 +3,16 @@
 <br />
 <p align="center">
 
-  <h1 align="center"><a href="https://mcrescas.github.io/publications/primary-space-cv/">Primary-Space Adaptive Control Variates using Piecewise-Polynomial Approximations</a></h1>
+  <h1 align="center"><a href="https://mcrespo.me/publications/primary-space-cv/">Primary-Space Adaptive Control Variates using Piecewise-Polynomial Approximations</a></h1>
 
-  <a href="https://mcrescas.github.io/publications/primary-space-cv/">
-    <img src="https://mcrescas.github.io/publications/primary-space-cv/figures/socialMedia.png" alt="Logo" width="100%">
+  <a href="https://mcrespo.me/publications/primary-space-cv/">
+    <img src="https://mcrespo.me/publications/primary-space-cv/figures/socialMedia.png" alt="Logo" width="100%">
   </a>
 
   <p align="center">
     ACM Transactions on Graphics - 2021
     <br />
-    <a href="https://mcrescas.github.io"><strong>Miguel Crespo</strong></a>
+    <a href="https://mcrespo.me"><strong>Miguel Crespo</strong></a>
     ·
     <a href="http://giga.cps.unizar.es/~ajarabo/"><strong>Adrian Jarabo</strong></a>
     ·
@@ -20,10 +20,10 @@
   </p>
 
   <p align="center">
-    <a href='https://mcrescas.github.io/publications/primary-space-cv/data/crespo2021primary.pdf'>
+    <a href='https://mcrespo.me/publications/primary-space-cv/data/crespo2021primary.pdf'>
       <img src='https://img.shields.io/badge/Paper-PDF-red?style=flat-square' alt='Paper PDF'>
     </a>
-    <a href='https://mcrescas.github.io/publications/primary-space-cv' style='padding-left: 0.5rem;'>
+    <a href='https://mcrespo.me/publications/primary-space-cv' style='padding-left: 0.5rem;'>
       <img src='https://img.shields.io/badge/Project-Page-blue?style=flat-square' alt='Project Page'>
     </a>
     <a href='https://github.com/adolfomunoz/viltrum' style='padding-left: 0.5rem;'>
