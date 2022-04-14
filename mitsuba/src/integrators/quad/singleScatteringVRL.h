@@ -115,7 +115,7 @@ static StatsCounter avgPathLength_singleScattering_vrl("Single scattering quadra
 class SingleScatteringQuadratureVRL : public MonteCarloIntegrator {
 public:
 	SingleScatteringQuadratureVRL(const Properties &props)
-        : MonteCarloIntegrator(props) { 
+        : MonteCarloIntegrator(props) {
             m_directSampling = props.getBoolean("directSampling", false);
             m_raySpectrum = props.getSpectrum("vrlSpectrum", Spectrum(1.0));
             m_rayDir = props.getVector("vrlDir", Vector(1.0,0.0,0.0));
@@ -138,32 +138,32 @@ public:
             }*/
         }
 
-    //First value : s, second value factor (1/probability) 
+    //First value : s, second value factor (1/probability)
 	std::tuple<Float,Float> sample_distance(const Medium& medium, Float sample) const {
 		Float sigma_ref = medium.getSigmaT().max();
         Float d = - std::log(std::max(1.e-20,sample))/sigma_ref;
         return std::tuple<Float,Float>(d, 1.0f/(sample*sigma_ref));
     }
 
- 
+
     Float asinh(Float value) const
-	{   
+	{
 		if(value>0)
 			return log(value + sqrt(value * value + 1));
 		else
 			return -log(-value + sqrt(value * value + 1));
 	}
 
-    // Sample the Virtual Ray Light assuming an isotropic medium. Note that 
+    // Sample the Virtual Ray Light assuming an isotropic medium. Note that
     // this function samples according to the attenuation IN 3D.
-    Float sample_vrl( const Float A0, const Float A1, const Float h, 
+    Float sample_vrl( const Float A0, const Float A1, const Float h,
         const Float sinthita, Float &pdf, Float sample) const
     {
         // Compute vt according to Eq. 13 in [1].
         Float epsilon = std::max(1.e-20,sample);
         Float vt = h*std::sinh(A1*epsilon+A0*(1.f-epsilon))/sinthita;
 
-        // Compute the pdf according to Eq.9 in [1]. 
+        // Compute the pdf according to Eq.9 in [1].
         // This is equivalent to (Eq.10)/(Eq.11) in [1]. Note that
         // the terms have been already simplified.
         pdf = sinthita / (sqrtf(h*h+vt*vt*sinthita*sinthita)*(A1-A0));
@@ -172,7 +172,7 @@ public:
     }
 
     // Sample the camera ray assuming an isotropic medium, using Kulla and Fajardo's
-    // equiangular sampling [2]. Note that this function samples according to the 
+    // equiangular sampling [2]. Note that this function samples according to the
     // attenuation IN 3D.
     Float sample_camera_ray( const Float B0, const Float B1, const Float h, Float &pdf, Float sample) const
     {
@@ -181,21 +181,21 @@ public:
         Float epsilon = std::max(1.e-20,sample);
         Float ut = h*std::tan(B1*epsilon+B0*(1.f-epsilon));
 
-        // Compute the pdf according to a modified version of 
+        // Compute the pdf according to a modified version of
         // Eq.5 in [2].
         pdf = h / ((B1-B0)*(h*h + ut*ut));
 
         return ut;
     }
 
-    //First value : s, second value factor (1/probability) 
+    //First value : s, second value factor (1/probability)
 	std::tuple<Float,Float> sample_distance_equiangular(const Point lightPos, const Ray &ray, const Medium& medium, Float sample) const {
-		// distance from ray to light closest point in ray      
+		// distance from ray to light closest point in ray
         Float t_light = dot(lightPos - ray.o, ray.d);
-        
+
         // distance of point from light
         float distance = std::max((lightPos - (ray.o + t_light*ray.d)).length(),Epsilon);
-        
+
         Float thetaA = std::atan(-t_light/distance);
         Float thetaB = std::atan(M_PI/2);
 
@@ -214,10 +214,10 @@ public:
 		Float c = dot(r2.d,r2.d);
 		Float d = dot(r1.d,r1.o-Point(0.0));
 		Float e = dot(r2.d,r2.o-Point(0.0));
-		
+
 		t1 = (b*e-c*d)/(a*c-b*b);
 		t2 = (a*e-b*d)/(a*c-b*b);
-		
+
 		Vector h =	r1.o + t1*r1.d -
 						r2.o + t2*r2.d;
 
@@ -227,7 +227,7 @@ public:
     Spectrum surface_hit_factor(const Medium& medium, Float dist) const {
 		return (-dist*medium.getSigmaT()).exp()/(1.0f - std::exp(-dist*medium.getSigmaT().max()));
     }
-    
+
 
     /// Unserialize from a binary data stream
 	SingleScatteringQuadratureVRL(Stream *stream, InstanceManager *manager)
@@ -260,13 +260,13 @@ public:
                 //rRec.rayIntersect(vritualRay);
 
                 // Assuming a homogeneous medium
-	            Spectrum u_t= medium->getSigmaT(), 
+	            Spectrum u_t= medium->getSigmaT(),
 			    u_s= medium->getSigmaS();
 
                 // Get u_h, v_h, and h (Fig. 3 in [1])
                 Float uh, vh;
                 Float h = rays_distance(ray, vritualRay, uh, vh);
-                
+
                 // Compute u0t, u1t, v0t and v1t as the change of
                 // variables explained in Sec. 4.1 in [1]).
                 Float u0t = -uh, u1t = (its.t>m_max_dist?m_max_dist:its.t)-uh,
@@ -296,12 +296,12 @@ public:
                 {
                     Float pdf_v, pdf_u;
 
-                    // Sample v according to Eq.13 in [1]. Note that we are 
+                    // Sample v according to Eq.13 in [1]. Note that we are
                     // assuming an isotropic medium.
                     Point2 samples = rRec.nextSample2D();
                     Float vt = sample_vrl(Av0, Av1, h, sinthita, pdf_v, samples[0]);
-                    
-                    // Sample v according to Eq.14 in [1], formulated in [2]. 
+
+                    // Sample v according to Eq.14 in [1], formulated in [2].
                     Float ut = sample_camera_ray( Bu0, Bu1, h, pdf_u, samples[1]);
 
                     if(its.isValid() && ut+uh > its.t){
@@ -312,9 +312,9 @@ public:
                     // Note that we need to unmake the variable changes performed before
                     // (Sec. 4.1 in [1]).
                     Point	u = r.o+r.d*(ut+uh),
-                                v = vritualRay.o + 
+                                v = vritualRay.o +
                                     vritualRay.d*(vt+vh);
-                    
+
                     // Compute distance
                     Float W = (u-v).length();
                     if(W < Epsilon){
@@ -331,17 +331,17 @@ public:
 
                     //Spectrum Luv(1.f/(D==3?(W*W):W));
                     Spectrum Luv(1.f/(W*W));
-                    
+
                     // Compute phase functions
                     const PhaseFunction *phase = medium->getPhaseFunction();
 
-                    // For Ray phase function 
+                    // For Ray phase function
                     MediumSamplingRecord mRec; mRec.medium = medium; mRec.time = ray.time;
-                    mRec.t = ut+uh; mRec.p = u; 
-                    
-                    // For VRL phase function 
+                    mRec.t = ut+uh; mRec.p = u;
+
+                    // For VRL phase function
                     MediumSamplingRecord vRec; vRec.medium = medium; vRec.time = ray.time;
-                    vRec.t = vt+vh; vRec.p = v; 
+                    vRec.t = vt+vh; vRec.p = v;
 
                     Luv *= phase->eval(PhaseFunctionSamplingRecord(mRec, v2u, -ray.d))*
                         phase->eval(PhaseFunctionSamplingRecord(vRec, vritualRay.d, -v2u));
@@ -355,9 +355,9 @@ public:
 
                     // And store the sample
                     Li += Luv*flux/(pdf_u*pdf_v*(Float)m_nb_samples_vrl);
-                    return Li; //We never hit anything else.  
-                }                  
-                
+                    return Li; //We never hit anything else.
+                }
+
             }
 
             if (!its.isValid()) {
@@ -494,7 +494,7 @@ public:
 
             /* Keep track of the throughput and relative
                refractive index along the path */
-            
+
             throughput *= bsdfWeight;
             //throughput *= bsdfEval;
             eta *= bRec.eta;

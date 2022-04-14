@@ -212,8 +212,6 @@ public:
         return oss.str();
     }
 
-    Shader *createShader(Renderer *renderer) const;
-
     MTS_DECLARE_CLASS()
 protected:
     Spectrum m_radiance, m_power;
