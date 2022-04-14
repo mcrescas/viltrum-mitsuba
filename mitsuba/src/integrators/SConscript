@@ -22,6 +22,7 @@ plugins += env.SharedLibrary('motion', ['misc/motion.cpp'])
 
 # Primary-Space Adaptive Control Variates integratos
 plugins += env.SharedLibrary('pathQuadrature', ['quad/pathTracer.cpp'])
+plugins += env.SharedLibrary('pathQuadratureMIS', ['quad/pathMIS.cpp'])
 plugins += env.SharedLibrary('singleScatteringQuadrature', ['quad/singleScattering.cpp'])
 plugins += env.SharedLibrary('singleScatteringQuadratureEquiangular', ['quad/singleScatteringEquiangular.cpp'])
 plugins += env.SharedLibrary('singleScatteringQuadratureVRL', ['quad/singleScatteringVRL.cpp'])
